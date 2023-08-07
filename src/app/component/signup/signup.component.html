@@ -1,0 +1,80 @@
+
+
+<div
+  class="container mt-3 border border-dark shadow-lg p-3 bg-secondary rounded"
+>
+  <h1 class="text-center text-white mb-2">Signup</h1>
+
+  <form [formGroup]="form " (ngSubmit)="onSubmit()">
+    <div class="mb-3 text-white">
+      <label for="name" class="form-label">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="name"
+        formControlName="name"
+      />
+      <div *ngIf="name && name.touched" class="text-danger">
+        <span *ngIf="name.errors?.['required'] ">Enter name</span>
+        <span *ngIf="name.errors?.['minlength'] ">Enter valid name</span>
+      </div>
+    </div>
+
+    <div class="mb-3 text-white">
+      <label for="email" class="form-label">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        placeholder="email"
+        formControlName="email"
+      />
+      <div *ngIf="email && email.touched" class="text-danger">
+        <span *ngIf="email.errors?.['required'] ">Enter email</span>
+        <span *ngIf="email.errors?.['minlength'] || email.errors?.['email'] "
+          >Enter valid Email address</span
+        >
+      </div>
+    </div>
+    <div class="mb-3 text-white">
+      <label for="mobile" class="form-label">Mobile</label>
+      <input
+        type="mobile"
+        class="form-control"
+        placeholder="mobile"
+        formControlName="mobile"
+      />
+      <div *ngIf="mobile && mobile.touched" class="text-danger">
+        <span *ngIf="mobile.errors?.['required'] ">Enter mobile</span>
+        <span *ngIf="mobile.errors?.['minlength'] || mobile.errors?.['mobile'] || mobile.errors?.['maxlength'] "
+          >Enter valid phone number</span
+        >
+      </div>
+    </div>
+
+    <div class="mb-3 text-white">
+      <label for="password" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        placeholder="Password"
+        formControlName="password"
+      />
+      <div *ngIf="password && password.touched" class="text-danger">
+        <span *ngIf="password.errors?.['required'] ">Enter password</span>
+        <span
+          *ngIf="password.errors?.['minlength'] || password.errors?.['pattern'] "
+        >
+          Password length should be min 6
+        </span>
+      </div>
+    </div>
+    <div class="text-center">
+      <button
+        class="btn btn-primary mt-2"
+        [class.disabled]="form.status === 'INVALID'"
+      >
+        Signup
+      </button>
+    </div>
+  </form>
+</div>

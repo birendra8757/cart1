@@ -1,0 +1,40 @@
+<div class="container mt-5  border border-dark  shadow-lg p-3  bg-secondary rounded  ">
+    <h1 class="text-center text-white mb-2">Login</h1>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <div class="mb-3 text-white">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" placeholder="email" formControlName="email" />
+            <div *ngIf="email && email.touched" class="text-danger">
+                <span *ngIf="email.errors?.['required'] ">Enter email</span>
+                <span *ngIf="email.errors?.['minlength'] || email.errors?.['email'] ">Enter valid Email address</span>
+            </div>
+        </div>
+
+
+        <div class="mb-3 text-white">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" placeholder="Password" formControlName="password" />
+            <div *ngIf="password && password.touched" class="text-danger">
+                <span *ngIf="password.errors?.['required'] ">Enter password</span>
+                <span *ngIf="password.errors?.['minlength'] || password.errors?.['pattern'] ">
+                    Password length should be min 6
+                </span>
+            </div>
+        </div>
+
+
+       <div>
+        <a  style="color: blue;" href="">ForgotPassword?</a>
+       </div>
+   
+
+
+        <div class="  d-flex  gap-2">
+            <button type="submit" class="btn btn-primary " [disabled]="form.invalid" style="margin-left: 85px;">Login</button>
+       
+            <button type="submit" class="btn btn-primary" routerLink="/signup">Back to Signup</button>
+        </div>
+    </form>
+</div>

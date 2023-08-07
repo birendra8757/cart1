@@ -1,0 +1,38 @@
+<div>
+  <ngb-carousel *ngIf="popularProducts" class="mt-5">
+    <ng-template *ngFor="let item of popularProducts" ngbSlide>
+      <div class="picsum-img-wrapper" style="margin-top: 40px;">
+        <img
+          class="product-header-img w-100"
+          src="{{ item.thumbnail }}"
+          alt="Random first slide"
+        />
+      </div>
+      <div class="carousel-caption">
+        <h3>{{ item.brand }}</h3>
+        <p>{{ item.description }}</p>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+
+  <div class="container-fluid">
+    <div class="row row-cols-2 row-cols-sm-4 mt-4 g-3">
+      <div class="col p-2" *ngFor="let p of HomeProducts">
+        <div class="card mx-auto shadow-lg p-3 bg-white rounded" (click)="productPage(p._id)">
+          <img class="card-img-top" src="{{ p.thumbnail }}" />
+          <!-- <span>{{p.title }}</span> -->
+          <span>{{ p.brand }}</span>
+          <span class="text-truncate">{{ p.description }}</span>
+
+          <div class="p-2 d-flex flex-row justify-content-between">
+            <span>${{ p.price }}</span>
+            <span class="bi bi-star">{{ p.rating }}</span>
+          </div>
+          <!-- <span>{{p.category }}</span> -->
+        </div>
+      </div>
+    </div>
+
+   
+  </div>
+</div>
